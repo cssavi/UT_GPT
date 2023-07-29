@@ -1,7 +1,9 @@
+import os
 from flask import Flask, render_template, request
-from src.utgpt import setup_pinecone, query_openai, query_with_sources, os
+from utgpt import setup_pinecone, query_openai, query_with_sources
 
-app = Flask(__name__)
+template_dir = os.path.abspath('templates')
+app = Flask(__name__, template_folder=template_dir)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
