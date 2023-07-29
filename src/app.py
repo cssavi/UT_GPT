@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from utgpt import setup_pinecone, query_openai, query_with_sources, os
+from src.utgpt import setup_pinecone, query_openai, query_with_sources, os
 
 app = Flask(__name__)
 
