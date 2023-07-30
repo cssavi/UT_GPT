@@ -21,12 +21,55 @@
                 margin: 0;
                 background-color: #f5f5f5;
                 font-family: Arial, sans-serif;
+                color: black;
             }
             form {
                 display: flex;
-                flex-direction: column;
                 align-items: center;
-                gap: 10px;
+                width: 80%;
+                max-width: 400px;
+                justify-content: center;
+            }
+            .query-container {
+                display: flex;
+                align-items: center;
+                border: 1px solid rgba(0, 0, 0, 0.1); /* Light black border */
+                background-color: white; /* White background */
+                border-radius: 8px; /* Moderate rounding */
+                padding-left: 0; /* Padding to push input right */
+                padding-right: 0; /* Same padding as left */
+                width: 100%;
+                box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            }
+            #query {
+                padding: 10px;
+                border: none;
+                font-size: 16px;
+                width: calc(100% - 30px - 7px); /* Width of the container minus button width and right margin */
+                outline: none;
+                border-radius: 6px; /* Same rounding as container */
+            }
+            button {
+                width: 30px; /* Width of the button */
+                height: 30px; /* Height of the button */
+                margin: 9px 9px 9px 0; /* Top, right, bottom, left margin */
+                padding-left: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                background-color: white; /* Initially white */
+                color: gray; /* Initially gray */
+                cursor: pointer;
+                transition: background-color 0.3s ease, color 0.3s ease;
+                border-radius: 6px; /* Same rounding as container */
+            }
+            button.active {
+                background-color: #b45309; /* Burnt orange when active */
+                color: white; /* White when active */
+            }
+            button.active:hover {
+                background-color: #8c4007; /* Darker shade of burnt orange on hover when active */
             }
             #result-box {
                 margin-top: 20px;
@@ -39,17 +82,37 @@
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
                 text-align: center;
             }
+            .arrow-icon {
+                height: 14px;
+                width: 14px;
+            }
         </style>
     </head>
     <body>
         <h1>UT Austin GPT</h1>
         <form method="POST">
-            <label for="query">Enter your query:</label>
-            <input type="text" id="query" name="query" required>
-            <input type="submit" value="Submit">
+            <div class="query-container">
+                <input type="text" id="query" name="query" placeholder="Enter your question" required oninput="updateButtonState()">
+                <button type="submit" id="submitButton">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="arrow-icon" stroke-width="2">
+                        <path d="M.5 1.163A1 1 0 0 1 1.97.28l12.868 6.837a1 1 0 0 1 0 1.766L1.969 15.72A1 1 0 0 1 .5 14.836V10.33a1 1 0 0 1 .816-.983L8.5 8 1.316 6.653A1 1 0 0 1 .5 5.67V1.163Z" fill="currentColor"></path>
+                    </svg>
+                </button>
+            </div>
         </form>
         <div id="result-box">
             <p>{{ result }}</p>
         </div>
+        <script>
+            function updateButtonState() {
+                var queryInput = document.getElementById("query").value;
+                var submitButton = document.getElementById("submitButton");
+                if (queryInput.length > 0) {
+                    submitButton.classList.add("active");
+                } else {
+                    submitButton.classList.remove("active");
+                }
+            }
+        </script>
     </body>
 </html>
