@@ -19,7 +19,9 @@ def home():
     try:
         if request.method == 'POST':
             query = request.form.get('query')
+            print(f"Query: {query}")
             result = agent(query)['output']
+            print(f"Output: {result}")
     except Exception as e:
         logging.error(f"An error occurred while processing the query: {str(e)}")
         result = "An error occurred while processing your query. Please try again later."
