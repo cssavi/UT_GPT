@@ -11,6 +11,21 @@
         </script>
         <title>UT Austin GPT</title>
         <style>
+            .loader {
+                border: 5px solid #f3f3f3;
+                border-top: 5px solid #bf5700; /* Burnt orange color to match your theme */
+                border-radius: 50%;
+                width: 25px;
+                height: 25px;
+                padding-right: 10px;
+                animation: spin 1s linear infinite;
+                margin: 0 auto;
+                display: none; /* Hidden by default */
+            }
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
             body {
                 display: flex;
                 flex-direction: column;
@@ -96,12 +111,21 @@
                         <path d="M.5 1.163A1 1 0 0 1 1.97.28l12.868 6.837a1 1 0 0 1 0 1.766L1.969 15.72A1 1 0 0 1 .5 14.836V10.33a1 1 0 0 1 .816-.983L8.5 8 1.316 6.653A1 1 0 0 1 .5 5.67V1.163Z" fill="currentColor"></path>
                     </svg>
                 </button>
+                <div id="loader" class="loader"></div>
             </div>
         </form>
         <div id="result-box">
             <p>{{ result }}</p>
         </div>
         <script>
+            document.querySelector('form').addEventListener('submit', function() {
+                document.getElementById('loader').style.display = 'block';
+                // You can hide it later when the result is ready
+                // For example:
+                // setTimeout(function() {
+                //     document.getElementById('loader').style.display = 'none';
+                // }, 1000); // Hide it after 1 second (for demonstration purposes)
+            });
             function updateButtonState() {
                 var queryInput = document.getElementById("query").value;
                 var submitButton = document.getElementById("submitButton");
