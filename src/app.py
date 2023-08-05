@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 
 template_dir = os.path.abspath('templates')
-app = Flask(__name__, template_folder=template_dir)
+app = Flask(__name__, template_folder=template_dir, static_folder='../static')
 
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -19,9 +19,7 @@ def home():
     try:
         if request.method == 'POST':
             query = request.form.get('query')
-            print(f"Query: {query}")
             result = agent(query)['output']
-            print(f"Output: {result}")
     except Exception as e:
         logging.error(f"An error occurred while processing the query: {str(e)}")
         result = "An error occurred while processing your query. Please try again later."

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!-- Google tag (gtag.js) -->
+        <meta http-equiv="Content-Language" content="en">
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBHR7R3N68"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
@@ -11,6 +11,27 @@
         </script>
         <title>UT Austin GPT</title>
         <style>
+            @font-face {
+                font-family: 'Libre_Franklin_SemiBold';
+                src: url('/static/Libre_Franklin/static/LibreFranklin-SemiBold.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: 'Libre_Franklin_Medium';
+                src: url('/static/Libre_Franklin/static/LibreFranklin-Medium.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+            .footer {
+                position: fixed;
+                right: 15px;
+                bottom: 0;
+                text-align: right;
+                padding: 0px;
+                font-family: 'Libre_Franklin_Medium', Arial, sans-serif;
+                font-size: 15px;
+            }
             .loader {
                 border: 5px solid #f3f3f3;
                 border-top: 5px solid #bf5700; /* Burnt orange color to match your theme */
@@ -34,7 +55,7 @@
                 height: 100vh;
                 margin: 0;
                 background-color: #f5f5f5;
-                font-family: Arial, sans-serif;
+                font-family: 'Libre_Franklin_SemiBold', Arial, sans-serif;
                 color: black;
             }
             form {
@@ -59,6 +80,7 @@
                 padding: 10px;
                 border: none;
                 font-size: 16px;
+                font-family: 'Libre_Franklin_Medium', Arial, sans-serif;
                 width: calc(100% - 30px - 7px); /* Width of the container minus button width and right margin */
                 outline: none;
                 border-radius: 6px; /* Same rounding as container */
@@ -92,6 +114,7 @@
                 background-color: #fff;
                 border: 1px solid #ddd;
                 border-radius: 4px;
+                font-family: 'Libre_Franklin_Medium', Arial, sans-serif;
                 box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
                 text-align: center;
             }
@@ -136,5 +159,10 @@
                 }
             }
         </script>
+        <div class="footer">
+            <p>Savindu Wimalasooriya<br>
+               <a href="mailto:youremail@example.com">savinduw@utgpt.dev</a>
+            </p>
+        </div>
     </body>
 </html>
