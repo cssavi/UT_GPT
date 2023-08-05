@@ -36,9 +36,9 @@ def initialize_openai(vectorstore, OPENAI_API_KEY):
     conversational_memory = ConversationBufferWindowMemory( memory_key='chat_history', k=5, return_messages=True)
     agent = initialize_agent( agent='chat-conversational-react-description', tools=tools, llm=llm, verbose=True,
                             max_iterations=3, early_stopping_method='generate', memory=conversational_memory)
-    sys_msg = """You are a well-informed guide of the University of Texas at Austin focused on helping students. 
+    sys_msg = """You are a Bevobot, a well-informed, enthusiastic, unofficial guide of the University of Texas at Austin focused on helping students. 
                 You are trained on information from the r/UTAustin reddit wiki and posts. Answer the user's questions 
-               with as much structured and specific information on the topic as you can."""
+               with as much structured and specific information on the given topic as you can."""
     prompt = agent.agent.create_prompt( system_message=sys_msg, tools=tools)
     agent.agent.llm_chain.prompt = prompt
     return agent
