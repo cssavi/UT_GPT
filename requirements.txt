@@ -10,6 +10,7 @@ dataclasses-json==0.5.13
 dnspython==2.4.1
 Flask==2.3.2
 frozenlist==1.4.0
+gunicorn==21.2.0
 idna==3.4
 itsdangerous==2.1.2
 Jinja2==3.1.2
